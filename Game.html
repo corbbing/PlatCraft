@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Mining Game</title>
+</head>
+
+<body>
+<script>
+
+function Item(id, name){
+	this.name = name;
+	this.id = id;
+	this.count = 1;
+}
+
+Item.prototype.newInstance = function(){
+	return new this.constructor(this.id, this.name);
+}
+
+function Mineral(id,name, color, smeltItem){
+	Item.call(this, id, name);
+}
+
+function Entity(){
+	this.x = 0; //Coords
+	this.y = 0;
+	this.vx = 0;
+	this.vy = 0;
+	this.damage = 0;
+	this.ticks = 0;
+	this.tickTime = 0;
+	this.attrs = {
+		health : 1,
+		maxHealth : 1,
+	};
+}
+Entity.prototype.type = "entity";
+
+Entity.prototype.onTouch = function(e){ //When it touches an entity
+	
+}
+
+Entity.prototype.onInteract = function(e){
+	
+}
+
+Entity.prototype.hurt = function(e){
+	
+}
+
+Entity.prototype.attack = function(e){
+	
+}
+
+Entity.prototype.draw = function(){
+	
+}
+
+Entity.prototype.update = function(delta){
+	this.tickTime += delta;
+	if (this.tickTime > 1000){
+		this.tickTime = 0;
+		//Do stuff here
+	}
+}
+
+function Mob(){
+	Entity.call(this);
+}
+Mob.prototype = Object.create(Entity.prototype);
+
+function Ore(mineral){
+	Entity.call(this);
+	this.mineral = mineral;
+}
+Ore.prototype = Object.create(Entity.prototype);
+
+function Model(){
+	this.points = [];
+	this.x = 0;
+	this.y = 0;
+	this.osx = 0;
+	this.osy = 0;
+}
+
+</script>
+</body>
+</html>
